@@ -1,0 +1,87 @@
+
+/*
+deprecated versions of calcAddr() and reset()
+int calcAddr(int* address){
+	st* mST;
+	return address=((mST->tdep+1)*(mST->trow+1)*(mST->tcol+1));
+}
+
+void blockstatus(int address){
+	
+}
+void reset(int depth, int rows, int columns){ // delete all contents in RAM
+	st* s=(st*)malloc(sizeof(s));
+	while(depth<index3){
+		while(rows<index2){
+			while(columns<index1){
+				pop(s, memory ram[depth++][rows++][columns++].*ptr);
+			}
+		}
+	}
+	free(s);
+}
+*/
+
+/*
+Older version of CAL_ADDR with errors
+#define calcaddr (depth, rows, columns)(\
+	int addr;\
+	addr=((++depth)* (++rows)*(++columns));\
+	address=dtoh(addr);\
+)*?	
+
+
+
+/*
+	older version of dtoh() with issues
+int calhexrem(int dividend){
+	int rem;
+	return rem=dividend%16;
+}
+char placehexdig(int input, char* key){
+	const short costval1='A'-10;
+	const short constval2='0';
+	const short constval3='a'-10
+	if(input>=0&&input<=9){
+		return input+constval2;
+	}
+	else if(input>=10&&input<=15){ 					
+		if(strcmp(key,"lower")==0||strcmp(key,"lc")==0||strcmp(key,"l")==0||strcmp(key,"lowercase")==0)		// lowercase
+			return input+constval3;										// since 10 is A, A-10 is 55 thus if input
+																		// is 11, output is 11+55 = 66 or 'B'
+	
+		else if(strcmp(key,"upper")==0||strcmp(key,"uc")==0||strcmp(key,"U")||strcmp(key,"uppercase")==0)	// uppercase
+			return input+constval1;										// since 10 is a, a-10 is 87 thus if input
+																		// is 11, output is 11+87 = 98 or 'b'
+	}
+	else{
+		return -1;
+	}
+}
+char* dtohc(int dec_num){
+	int index=0;
+	int dec_rem;
+	char* hexnum;
+	if(dec_num>=0&&dec_num<=15){
+		*(hexnum+index++)=placehexdig(dec_num, "U");
+	}
+	else{
+		while(dec_num>15){
+			int decrem=calchexrem(dec_num);
+			*(hexnum+index++)=placehexdig(dec_rem, "U");
+			dec_num/=16;
+		}
+	}
+	return hexnum;
+}
+
+long dtoh(int decnum){
+	char* hex_str=dtohc(decnum);
+	char* endptr;
+	long int value = strtol(hex_str, &endptr, 16);
+	if(*endptr=='\0')
+		return value;
+	else
+		return 1;
+}
+*/

@@ -1,0 +1,50 @@
+	/* Deprecated in favour of RAM_SIZE
+		const int MAX_BLOCK_NUM=136;
+		const int BLOCK_LIMIT=8;
+		const int ADDRESS_LIMIT=8;8
+	*/
+	
+	/* deprecated memory definition in favour of current one
+	typedef struct{
+		union {							
+			char val1;					// character data
+			char* val2;					// pointer to char
+			
+			bool var3;					// bool data
+			bool* var4;					// pointer to bool
+			
+			int val5;					// integers
+			int* val6;					// pointer to int
+			unsigned val7;	 			// unsigned integer data
+			unsigned* vall8;			// pointer to unsigned int
+			short val9;					// short integer
+			short* val10;				// pointer to short int
+			unsigned val11;				// unsigned integer data
+			unsigned* vall12;			// pointer to unsigned int
+			long val13;					// long integer data
+			long* val14;				// pointer to long int
+			unsigned long val15;		// unsigned long integer data
+			unsigned* long vall16;		// pointer to unsigned long int
+			
+			double val17;				// doubble precision floating point data
+			double* val18;				// pointer to double 
+			float val19;				// single precision floating point data
+			float* val20;				// pointer to float
+			
+			void* val21;				// void pointer to handle array and function data
+		};
+	}memory;*/
+
+	/* 3d version deprecated
+	typedef struct stack{ 	
+		memory *stkptr;					// pointer to memory, used to point to RAM
+		int tdep;						// show the top of the blocks used by the stack
+		int trow;						// show the top of the used addresses in the current block
+		int tcol;						// show the top of the used address 
+	}st;
+	*/									// st can be used to declare structures of type stack
+
+	/* 3d array deprecated 
+	extern memory RAM[MAX_BLOCK_NUM][BLOCK_LIMIT][ADDRESS_LIMIT]; // RAM size 8704 addresses*/
+
+	//#define USED_SPACE(X, Y, Z)  (C_ADDDR(X, Y, Z)*64)	// Actual size 0.557056 MB

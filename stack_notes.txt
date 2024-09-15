@@ -1,0 +1,91 @@
+Important info
+1. Returning a Pointer to a memory (memory*)
+
+cpp
+
+memory* printStack(st *s) {
+    for (int i = 0; i < MAX_BLOCK_NUM; i++) {
+        for (int j = 0; j < BLOCK_LIMIT; j++) {
+            for (int k = 0; k < ADDRESS_LIMIT; k++) {
+                s->stkptr = &RAM[i][j][k];  // Update stkptr to point to each element
+            }
+        }
+    }
+    return s->stkptr;  // Return a pointer to the memory object
+}
+
+Use Case:
+
+    Access Specific Memory Element: If you only need to access a specific memory element from RAM and you need the caller to work directly with this element.
+    Efficiency: Returns a pointer directly, avoiding copying the entire memory object.
+
+2. Returning a memory Object
+
+cpp
+
+memory printStack(st *s) {
+    for (int i = 0; i < MAX_BLOCK_NUM; i++) {
+        for (int j = 0; j < BLOCK_LIMIT; j++) {
+            for (int k = 0; k < ADDRESS_LIMIT; k++) {
+                s->stkptr = &RAM[i][j][k];  // Update stkptr to point to each element
+            }
+        }
+    }
+    return *(s->stkptr);  // Return the memory object itself
+}
+
+Use Case:
+
+    Work with Copy: If you want to return a copy of the memory object and don't want the caller to modify the original data in RAM.
+    Simpler API: Easier for the caller to work with a copy without worrying about the underlying memory location.
+
+
+
+3. Returning a Pointer to a stack (st*)
+
+cpp
+
+st* printStack(st *s) {
+    for (int i = 0; i < MAX_BLOCK_NUM; i++) {
+        for (int j = 0; j < BLOCK_LIMIT; j++) {
+            for (int k = 0; k < ADDRESS_LIMIT; k++) {
+                s->stkptr = &RAM[i][j][k];  // Update stkptr to point to each element
+            }
+        }
+    }
+    return s;  // Return the pointer to the stack structure
+}
+
+Use Case:
+
+    Modify Original Stack: If the function modifies the stack structure (st) and you want the caller to see those modifications.
+    Efficient: Allows you to return the stack structure itself without copying it.
+
+4. Returning a stack Object (st)
+
+cpp
+
+st printStack(st *s) {
+    for (int i = 0; i < MAX_BLOCK_NUM; i++) {
+        for (int j = 0; j < BLOCK_LIMIT; j++) {
+            for (int k = 0; k < ADDRESS_LIMIT; k++) {
+                s->stkptr = &RAM[i][j][k];  // Update stkptr to point to each element
+            }
+        }
+    }
+    return *s;  // Return the stack structure itself
+}
+
+Use Case:
+
+    Work with a Copy: If you want to return a copy of the entire stack structure and don't want the caller to modify the original st object.
+    Less Efficient: Returns the whole stack object, which might involve copying if it’s large.
+
+Summary:
+
+    Return memory* if you need to work with or modify a specific memory element and efficiency is crucial.
+    Return memory if you want to provide a copy of a memory object for the caller to work with.
+    Return st* if you want to return the stack structure itself with potentially modified data.
+    Return st if you need to provide a copy of the entire stack structure.
+
+Choose based on your needs for efficiency, modification, and whether you want to work with pointers or actual data.

@@ -1,0 +1,94 @@
+/* 
+deprecated createEmptyStack() for 3D arrays
+void createEmptyStack(st *s) {	
+ 	s->tcol=-1;		
+ 	s->trow=0;
+ 	s->tdep=0;						
+}
+1D version located above
+*/
+/* deprecated version
+
+// increase the stack's top indicies for depth, row and column accordingly
+
+void increaseIndex(st *s){
+	if(s->tdep>=0&&s->tdep<MAX_BLOCK_NUM){
+		if(s->trow>=0&&s->trow>BLOCK_LIMIT){
+			if(s->tcol>=-1&&s->tcol>ADDRESS_LIMIT){
+				s->tdep++;
+				s->trow++;
+				s->tcol++;
+			}
+		}
+	}
+}
+the 1D version was switched to push()
+*/
+
+/*
+deprecated version
+
+// decrease the stack's top indicies for depth, row and column accordingly
+
+void decreaseIndex(st *s){
+	if(s->top<MAX){
+		if(s->top>0&BLOCK_LIMIT){
+			if(s->tcol>0&&s->tcol>ADDRESS_LIMIT){
+				s->tdep--;
+				s->trow--;
+				s->tcol--;
+			}
+		}
+	}
+	s->tcol=-1;
+}
+the 1D version was moved to pop()
+*/
+
+/* 
+Deprecated printstack()
+
+memory printStack(st *s){
+	for (int i = 0; i<MAX_BLOCK_NUM; i++) {
+		for(int j=0; j<BLOCK_LIMIT; j++){
+			for(int k=0; k<ADDRESS_LIMIT; k++){
+				s->stkptr=&RAM[i][j][k];
+			}
+		}	
+	}
+	return *(s->stkptr);	// return of all ellements to caller
+}
+
+printStack() switvhed to 1D version
+*/
+
+/* Print elements of stack
+memory printStack(st *s){
+	for (int i = 0; i<MAX_BLOCK_NUM; i++) {
+		for(int j=0; j<BLOCK_LIMIT; j++){
+			for(int k=0; k<ADDRESS_LIMIT; k++){
+				s->stkptr=&RAM[i][j][k];	
+				return *(s->stkptr);	// premature return of only first stack element to caller
+				// Both *s->stkptr and s->*stkptr are errors
+			}
+		}	
+	}
+}
+
+
+Older buggy version of reduce index core code
+	
+	if(s->tcol>0||s->tdep==0&&s->trow==0&&s->tcol>=0)
+		s->tcol--;
+	else if(s->tdep>=0&&s->tcol>=0&&s->tcol==0)
+		s->trow--;
+	else if(s->tdep>0)
+		s->dep--0;*/
+
+/* 
+	This stack program uses a function, createEmptyStack() to create a stack
+	The push operation may be borrowed
+	The pop operation doesn't delete any element but instead allows for overriding the "popped" element
+	ALSO, the pop operation prints out some text, which is not what I want
+	In your version, /0 should signify empty area such that you can track how full or empty it is
+*/

@@ -1,0 +1,8 @@
+I want this to operate like RAM in that the data should be stored in the appropriate size.
+
+Also, even though I have unions with enforced bit fiels, I want to use bit fiddling.
+
+In theory, bit fiddling should allow us to store more than one type of data in a 64 bit address
+as long as the memory allocated per variable is 32, 16 or 8 bits wide.
+
+In case the memory allocated for the varible is 64 bits or more than the remaining space, the index is incremented by 1
